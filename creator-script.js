@@ -69,11 +69,11 @@ function removeSelectedGif(index) {
 function generateGameLink() {
     const gifWords = selectedGifs.map((gif, index) => ({
         gif: gif.images.original.url,
-        word: selectedGifsList.children[index].querySelector('input').value
+        word: selectedGifsList.children[index].querySelector('input').value.trim()
     }));
     const gameData = JSON.stringify(gifWords);
     const encodedGameData = encodeURIComponent(gameData);
-    const gameLink = `${window.location.origin}/game.html?data=${encodedGameData}`;
+    const gameLink = `${window.location.origin}/GifGame/game.html?data=${encodedGameData}`;
     
     gameLinkInput.value = gameLink;
     gameLinkContainer.style.display = 'block';

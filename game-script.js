@@ -7,8 +7,13 @@ function loadGameData() {
     const urlParams = new URLSearchParams(window.location.search);
     const encodedData = urlParams.get('data');
     if (encodedData) {
-        gameData = JSON.parse(decodeURIComponent(encodedData));
-        displayGame();
+        try {
+            gameData = JSON.parse(decodeURIComponent(encodedData));
+            displayGame();
+        } catch (error) {
+            console.error("Error parsing game data:", error);
+            gifContainer.innerHTML = '<p>Error loading game data. Please check the URL and try again.</p>';
+        }
     } else {
         gifContainer.innerHTML = '<p>No game data found. Please use a valid game link.</p>';
     }

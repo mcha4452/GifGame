@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const giphy = require('giphy-api')('YOUR_GIPHY_API_KEY');
+const giphy = require('giphy-api')('ph4bDCK5BwAL6TXfJo7XOdMc02FFI6JN');
 
 const app = express();
 const port = 3000;

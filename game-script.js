@@ -4,26 +4,36 @@ const checkAnswersButton = document.getElementById('check-answers-button');
 let gameData = [];
 
 function loadGameData() {
+    console.log("loadGameData function called");
     const urlParams = new URLSearchParams(window.location.search);
     const encodedData = urlParams.get('data');
+    console.log("Encoded data from URL:", encodedData);
+    
     if (encodedData) {
         try {
-            gameData = JSON.parse(decodeURIComponent(encodedData));
+            const decodedData = decodeURIComponent(encodedData);
+            console.log("Decoded data:", decodedData);
+            gameData = JSON.parse(decodedData);
+            console.log("Parsed game data:", gameData);
             displayGame();
         } catch (error) {
             console.error("Error parsing game data:", error);
             gifContainer.innerHTML = '<p>Error loading game data. Please check the URL and try again.</p>';
         }
     } else {
+        console.log("No 'data' parameter found in URL");
         gifContainer.innerHTML = '<p>No game data found. Please use a valid game link.</p>';
     }
 }
 
 function displayGame() {
+    console.log("displayGame function called");
     gifContainer.innerHTML = '';
     const allWords = gameData.map(item => item.word);
+    console.log("All words:", allWords);
     
     gameData.forEach((item, index) => {
+        console.log(`Creating element for GIF ${index + 1}:`, item);
         const gifDiv = document.createElement('div');
         gifDiv.className = 'gif-word-pair';
         
@@ -43,6 +53,7 @@ function displayGame() {
 }
 
 function checkAnswers() {
+    console.log("checkAnswers function called");
     let correct = 0;
     gameData.forEach((item, index) => {
         const select = document.getElementById(`select${index}`);
@@ -56,5 +67,6 @@ function checkAnswers() {
     alert(`You got ${correct} out of ${gameData.length} correct!`);
 }
 
-window.onload = loadGameData;
+console.log("Script loaded, adding event listeners");
+window.addEventListener('load', loadGameData);
 checkAnswersButton.addEventListener('click', checkAnswers);

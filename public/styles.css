@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#main-container, #creator-container, #game-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+#search-container {
+    display: flex;
+    gap: 10px;
+}
+
+#search-input {
+    flex-grow: 1;
+    padding: 5px;
+}
+
+#results-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.gif-result {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+#selected-gifs-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.selected-gif-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.selected-gif-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+button, .button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+button:hover, .button:hover {
+    background-color: #45a049;
+}
